@@ -1,0 +1,38 @@
+
+<svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#991b1b" />
+      <stop offset="100%" stop-color="#700a0a" />
+    </linearGradient>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fef08a" />
+      <stop offset="50%" stop-color="#f59e0b" />
+      <stop offset="100%" stop-color="#d97706" />
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="0.96" stdDeviation="1.28" flood-color="#000" flood-opacity="0.3" />
+    </filter>
+  </defs>
+
+  <!-- Background Canvas -->
+  <rect width="64" height="64" fill="#ffffff" rx="14.08" />
+
+  <!-- Main Container Card / Shield Background -->
+  <g filter="url(#shadow)">
+    <!-- Base Rounded Container if not maskable -->
+    <rect x="5.120000000000001" y="5.120000000000001" width="53.76" height="53.76" rx="11.52" fill="url(#bgGrad)" stroke="url(#goldGrad)" stroke-width="0.96" />
+  </g>
+
+  <!-- Central Emblem Geometry: Minimalist Star & Shield outline -->
+  <g transform="translate(32, 30.08) scale(0.125)">
+    <!-- Clean Shield Contour -->
+    <path d="M0 -150 L110 -100 C110 50 70 130 0 170 C-70 130 -110 50 -110 -100 Z" fill="none" stroke="url(#goldGrad)" stroke-width="10" />
+    
+    <!-- Gold Star Emblem -->
+    <path d="M0 -75 L20 -20 L75 -20 L30 15 L48 70 L0 35 L-48 70 L-30 15 L-75 -20 L-20 -20 Z" fill="url(#goldGrad)" />
+    
+    <!-- Subtitle Text "PƠNG DRANG" -->
+    <text x="0" y="125" font-family="Arial, Helvetica, sans-serif" font-weight="900" font-size="28" fill="#ffffff" text-anchor="middle" letter-spacing="3">PƠNG DRANG</text>
+  </g>
+</svg>

@@ -1,0 +1,56 @@
+{
+  "name": "Công an xã Pơng Drang",
+  "short_name": "Công an Pơng Drang",
+  "description": "Cổng thông tin điện tử & Dịch vụ hành chính công Công an xã Pơng Drang, tỉnh Đắk Lắk",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#ffffff",
+  "theme_color": "#881337",
+  "lang": "vi-VN",
+  "dir": "ltr",
+  "scope": "/",
+  "categories": ["government", "public_safety", "utilities"],
+  "icons": [
+    {
+      "src": "/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/icons/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ],
+  "screenshots": [],
+  "shortcuts": [
+    {
+      "name": "Báo cáo ANTT",
+      "short_name": "Báo cáo",
+      "description": "Gửi phản ánh an ninh trật tự trực tuyến",
+      "url": "/?action=report",
+      "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Đường dây nóng",
+      "short_name": "Hotline",
+      "description": "Số điện thoại trực ban Công an xã",
+      "url": "/?action=hotline",
+      "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192" }]
+    }
+  ]
+}

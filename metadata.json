@@ -1,0 +1,6 @@
+{
+  "name": "Công an xã Pơng Drang",
+  "description": "Cổng thông tin điện tử và dịch vụ hành chính số dành cho người dân xã Pơng Drang, tỉnh Đắk Lắk",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

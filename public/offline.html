@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <title>Chế độ ngoại tuyến - Công an xã Pơng Drang</title>
+  <meta name="theme-color" content="#881337" />
+  <style>
+    :root {
+      --primary: #881337;
+      --primary-dark: #700a0a;
+      --gold: #f59e0b;
+      --bg: #f8fafc;
+      --text: #0f172a;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      text-align: center;
+    }
+    .header-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: white;
+      padding: 16px;
+      font-weight: bold;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+      border-bottom: 2px solid var(--gold);
+    }
+    .card {
+      background: white;
+      border-radius: 16px;
+      padding: 28px 20px;
+      max-width: 420px;
+      width: 100%;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      border: 1px solid #e2e8f0;
+      margin-top: 60px;
+    }
+    .icon-box {
+      width: 72px;
+      height: 72px;
+      background: #fee2e2;
+      color: #991b1b;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 16px;
+    }
+    .icon-box svg {
+      width: 36px;
+      height: 36px;
+    }
+    h1 {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: 8px;
+    }
+    p {
+      font-size: 14px;
+      color: #475569;
+      line-height: 1.5;
+      margin-bottom: 20px;
+    }
+    .hotline-box {
+      background: #fff1f2;
+      border: 1px solid #fecdd3;
+      border-radius: 12px;
+      padding: 14px;
+      margin-bottom: 20px;
+      text-align: left;
+    }
+    .hotline-title {
+      font-size: 12px;
+      font-weight: bold;
+      color: #9f1239;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .hotline-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+      padding: 6px 0;
+      border-bottom: 1px dashed #fecdd3;
+    }
+    .hotline-item:last-child {
+      border-bottom: none;
+    }
+    .phone-link {
+      color: #991b1b;
+      font-weight: bold;
+      text-decoration: none;
+      background: #ffe4e6;
+      padding: 4px 10px;
+      border-radius: 6px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 10px;
+      font-weight: bold;
+      font-size: 14px;
+      cursor: pointer;
+      width: 100%;
+      box-shadow: 0 2px 6px rgba(136, 19, 55, 0.3);
+      transition: all 0.2s;
+    }
+    .btn:active {
+      transform: scale(0.98);
+    }
+  </style>
+</head>
+<body>
+  <div class="header-bar">
+    CÔNG AN XÃ PƠNG DRANG
+  </div>
+
+  <div class="card">
+    <div class="icon-box">
+      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636a9 9 0 010 12.728m0 0l-2.829-2.829m2.829 2.829L21 21M15.536 8.464a5 5 0 010 7.072m0 0l-2.829-2.829m-4.243 2.829a5 5 0 010-7.072m0 0l2.829 2.829M3 3l18 18"></path>
+      </svg>
+    </div>
+
+    <h1>Chế độ ngoại tuyến (Offline)</h1>
+    <p>Thiết bị của bạn hiện không có kết nối Internet. Các thông tin quan trọng đã lưu vẫn có thể xem lại trong ứng dụng.</p>
+
+    <div class="hotline-box">
+      <div class="hotline-title">
+        📞 Khẩn cấp - Đường dây nóng trực ban
+      </div>
+      <div class="hotline-item">
+        <span>Công an xã Pơng Drang:</span>
+        <a href="tel:02623876113" class="phone-link">0262.3876.113</a>
+      </div>
+      <div class="hotline-item">
+        <span>Cảnh sát phản ứng nhanh:</span>
+        <a href="tel:113" class="phone-link">113</a>
+      </div>
+      <div class="hotline-item">
+        <span>Cứu nạn, PCCC:</span>
+        <a href="tel:114" class="phone-link">114</a>
+      </div>
+    </div>
+
+    <button class="btn" onclick="window.location.reload()">
+      🔄 Thử kết nối lại
+    </button>
+  </div>
+</body>
+</html>
