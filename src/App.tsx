@@ -10,6 +10,7 @@ import { QuickActions } from './components/QuickActions';
 import { AnnouncementsSection } from './components/AnnouncementsSection';
 import { NewsSection } from './components/NewsSection';
 import { BottomNav } from './components/BottomNav';
+import { Footer } from './components/Footer';
 import { Toast, ToastMessage } from './components/Toast';
 
 // Modals & Admin
@@ -26,6 +27,8 @@ import { AnnouncementsModal } from './components/AnnouncementsModal';
 
 import { AdminDashboard } from './components/admin/AdminDashboard';
 import { AdminLoginModal } from './components/admin/AdminLoginModal';
+
+import { analyticsService } from './services/analyticsService';
 
 // PWA Utilities
 import { PWAInstallPrompt } from './components/PWAInstallPrompt';
@@ -51,6 +54,22 @@ export default function App() {
 
   // Toast notifications state
   const [toasts, setToasts] = useState<ToastMessage[]>([]);
+
+  useEffect(() => {
+    // Initialize Google Analytics GA4
+    analyticsService.initGA();
+    analyticsService.trackPageView('Trang chủ - Công an xã Pơng Drang', '/');
+  }, []);
+
+  useEffect(() => {
+    if (activeModal) {
+      analyticsService.trackPageView(`Cửa sổ: ${activeModal}`, `/#modal-${activeModal}`);
+      analyticsService.trackEvent('open_modal', 'Navigation', activeModal);
+    } else if (activeTab) {
+      analyticsService.trackPageView(`Mục: ${activeTab}`, `/#tab-${activeTab}`);
+      analyticsService.trackEvent('change_tab', 'Navigation', activeTab);
+    }
+  }, [activeTab, activeModal]);
 
   useEffect(() => {
     loadAllData();
@@ -118,6 +137,7 @@ export default function App() {
 
   const handleCreateReport = async (newReportData: Omit<SecurityReport, 'id' | 'receiptCode' | 'createdAt' | 'status'>) => {
     const created = await dataService.addReport(newReportData);
+    analyticsService.trackEvent('submit_report', 'SecurityReport', newReportData.type);
     await loadAllData();
     handleCloseModal();
     addToast(
@@ -129,6 +149,7 @@ export default function App() {
 
   const handleCreateAppointment = async (newApptData: Omit<Appointment, 'id' | 'bookingCode' | 'createdAt' | 'status'>) => {
     const created = await dataService.addAppointment(newApptData);
+    analyticsService.trackEvent('book_appointment', 'Appointment', newApptData.purpose);
     await loadAllData();
     handleCloseModal();
     addToast(
@@ -202,29 +223,14 @@ export default function App() {
           onOpenAll={() => setActiveModal('news_list')}
         />
 
-        {/* Footer info bar with live editable contact details */}
-        <footer className="px-4 py-6 text-center text-xs text-slate-500 border-t border-slate-200/80 mt-6 space-y-1">
-          <p className="font-extrabold text-red-950 uppercase tracking-wide">
-            {contactInfo?.unitName || 'CÔNG AN XÃ PƠNG DRANG'}
-          </p>
-          <p className="text-slate-600">
-            Địa chỉ: {contactInfo?.address || 'Thôn 3, Xã Pơng Drang, Tỉnh Đắk Lắk'}
-          </p>
-          <p className="text-slate-500">
-            Trực ban Công an xã: <span className="font-bold text-red-700">02623539777</span> • Trực ban Hình sự: <span className="font-bold text-red-700">02623608839</span>
-          </p>
-          <div className="pt-2">
-            <button
-              onClick={() => setShowAdminLogin(true)}
-              className="px-3 py-1 bg-slate-200 hover:bg-slate-300 text-slate-700 text-[10px] font-bold rounded-lg transition-colors inline-flex items-center gap-1"
-            >
-              🔒 Cổng Quản trị viên (Admin Portal)
-            </button>
-          </div>
-          <p className="pt-2 text-[10px] text-slate-400">
-            © 2026 Cổng thông tin điện tử Công an nhân dân Việt Nam. Phiên bản Smartphone Applet.
-          </p>
-        </footer>
+        {/* Footer info bar with live editable contact details & direct links */}
+        <Footer
+          unitName={contactInfo?.unitName}
+          address={contactInfo?.address}
+          phone={contactInfo?.phone}
+          onOpenModal={(type) => setActiveModal(type)}
+          onOpenAdmin={() => setShowAdminLogin(true)}
+        />
       </main>
 
       {/* Bottom Navigation Bar */}

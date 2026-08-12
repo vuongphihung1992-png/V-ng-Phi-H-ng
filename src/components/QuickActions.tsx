@@ -14,7 +14,11 @@ import {
   MapPin,
   Megaphone,
   ChevronRight,
-  UserCheck
+  UserCheck,
+  ExternalLink,
+  Globe,
+  Sparkles,
+  ShieldCheck
 } from 'lucide-react';
 import { Announcement, ModalType } from '../types';
 
@@ -30,7 +34,8 @@ export const QuickActions: React.FC<QuickActionsProps> = ({
   announcements = [],
 }) => {
   const latestAnnouncement = announcements.length > 0 ? announcements[0] : null;
-  // Top Quick Actions
+
+  // Top Quick Highlight Actions
   const topQuickActions = [
     {
       id: 'news',
@@ -68,24 +73,27 @@ export const QuickActions: React.FC<QuickActionsProps> = ({
     {
       id: 'appointment',
       title: 'Đặt lịch làm việc',
+      desc: 'Tiếp công dân trực tiếp',
       icon: <Calendar className="w-6 h-6 text-emerald-700" />,
       modalType: 'appointment' as ModalType,
-      color: 'bg-emerald-50/70 hover:bg-emerald-100/80 border-emerald-200/80 text-emerald-950',
+      color: 'bg-emerald-50/80 hover:bg-emerald-100 border-emerald-200 text-emerald-950',
     },
     {
       id: 'hotline',
       title: 'Đường dây nóng',
+      desc: 'Khẩn cấp 24/7',
       icon: <Phone className="w-6 h-6 text-red-700" />,
       modalType: 'hotline' as ModalType,
-      color: 'bg-red-50/70 hover:bg-red-100/80 border-red-200/80 text-red-950',
+      color: 'bg-red-50/80 hover:bg-red-100 border-red-200 text-red-950',
       badge: '24/7',
     },
     {
       id: 'security_report',
       title: 'Phản ánh ANTT',
+      desc: 'Tố giác tội phạm',
       icon: <ShieldAlert className="w-6 h-6 text-amber-700" />,
       modalType: 'report' as ModalType,
-      color: 'bg-amber-50/70 hover:bg-amber-100/80 border-amber-300/80 text-amber-950',
+      color: 'bg-amber-50/80 hover:bg-amber-100 border-amber-300 text-amber-950',
       badge: 'Gấp',
     },
   ];
@@ -95,23 +103,26 @@ export const QuickActions: React.FC<QuickActionsProps> = ({
     {
       id: 'procedures',
       title: 'Thủ tục hành chính',
+      desc: 'Cư trú, CCCD, PCCC',
       icon: <FileText className="w-6 h-6 text-indigo-700" />,
       modalType: 'procedures' as ModalType,
-      color: 'bg-indigo-50/70 hover:bg-indigo-100/80 border-indigo-200/80 text-indigo-950',
+      color: 'bg-indigo-50/80 hover:bg-indigo-100 border-indigo-200 text-indigo-950',
     },
     {
       id: 'feedback',
       title: 'Góp ý - Phản ánh',
+      desc: 'Góp ý Dịch vụ công',
       icon: <Edit3 className="w-6 h-6 text-teal-700" />,
       modalType: 'report' as ModalType,
-      color: 'bg-teal-50/70 hover:bg-teal-100/80 border-teal-200/80 text-teal-950',
+      color: 'bg-teal-50/80 hover:bg-teal-100 border-teal-200 text-teal-950',
     },
     {
       id: 'faq',
       title: 'Hỏi đáp pháp luật',
+      desc: 'Tư vấn pháp lý',
       icon: <HelpCircle className="w-6 h-6 text-sky-700" />,
       modalType: 'faq' as ModalType,
-      color: 'bg-sky-50/70 hover:bg-sky-100/80 border-sky-200/80 text-sky-950',
+      color: 'bg-sky-50/80 hover:bg-sky-100 border-sky-200 text-sky-950',
     },
   ];
 
@@ -120,24 +131,46 @@ export const QuickActions: React.FC<QuickActionsProps> = ({
     {
       id: 'search',
       title: 'Tra cứu thông tin',
+      desc: 'Tra cứu tiến độ',
       icon: <Search className="w-6 h-6 text-purple-700" />,
       modalType: 'search' as ModalType,
-      color: 'bg-purple-50/70 hover:bg-purple-100/80 border-purple-200/80 text-purple-950',
+      color: 'bg-purple-50/80 hover:bg-purple-100 border-purple-200 text-purple-950',
     },
     {
       id: 'announcements',
       title: 'Thông báo chính thức',
+      desc: 'Cảnh báo ANTT',
       icon: <Bell className="w-6 h-6 text-rose-700" />,
       modalType: 'announcements_list' as ModalType,
-      color: 'bg-rose-50/70 hover:bg-rose-100/80 border-rose-200/80 text-rose-950',
+      color: 'bg-rose-50/80 hover:bg-rose-100 border-rose-200 text-rose-950',
       badge: unreadAnnouncements > 0 ? `${unreadAnnouncements}` : undefined,
     },
     {
       id: 'map_address',
       title: 'Trụ sở Công an xã',
+      desc: 'Bản đồ Google Maps',
       icon: <MapPin className="w-6 h-6 text-amber-800" />,
       modalType: 'map' as ModalType,
-      color: 'bg-amber-50/70 hover:bg-amber-100/80 border-amber-200/80 text-amber-950',
+      color: 'bg-amber-50/80 hover:bg-amber-100 border-amber-200 text-amber-950',
+    },
+  ];
+
+  // External Portal Shortcuts
+  const externalPortals = [
+    {
+      name: 'Dịch vụ công Bộ Công an',
+      url: 'https://dichvucong.bocongan.gov.vn',
+      tag: 'BCA',
+    },
+    {
+      name: 'Cổng DVC Quốc gia',
+      url: 'https://dichvucong.gov.vn',
+      tag: 'Chính phủ',
+    },
+    {
+      name: 'Định danh VNeID',
+      url: 'https://vneid.gov.vn',
+      tag: 'VNeID',
     },
   ];
 
@@ -197,14 +230,16 @@ export const QuickActions: React.FC<QuickActionsProps> = ({
         </div>
       </section>
 
-      {/* 3. CATEGORY GRID */}
+      {/* 3. CATEGORY GRID - DANH MỤC DỊCH VỤ & TIỆN ÍCH */}
       <section className="bg-white rounded-2xl p-3.5 border border-slate-200/80 shadow-2xs space-y-3">
         <div className="flex items-center justify-between px-1 border-b border-slate-100 pb-2">
           <h3 className="text-xs font-extrabold text-red-950 uppercase tracking-wider flex items-center gap-1.5">
-            <span className="w-2 h-2 rounded-full bg-red-700" />
+            <Sparkles className="w-4 h-4 text-amber-600" />
             DANH MỤC DỊCH VỤ & TIỆN ÍCH
           </h3>
-          <span className="text-[11px] text-slate-500 font-bold">9 tiện ích chính</span>
+          <span className="text-[11px] text-red-800 bg-red-50 px-2 py-0.5 rounded-full font-black border border-red-200">
+            9 tiện ích chính
+          </span>
         </div>
 
         {/* GROUP 1 */}
@@ -213,7 +248,7 @@ export const QuickActions: React.FC<QuickActionsProps> = ({
             <button
               key={card.id}
               onClick={() => onOpenModal(card.modalType)}
-              className={`relative flex flex-col items-center justify-center p-3 rounded-2xl border transition-all active:scale-95 group min-h-[96px] ${card.color}`}
+              className={`relative flex flex-col items-center justify-center p-2.5 sm:p-3 rounded-2xl border transition-all active:scale-95 group min-h-[100px] ${card.color}`}
             >
               {card.badge && (
                 <span className="absolute -top-1.5 -right-1 px-1.5 py-0.5 rounded-full text-[9px] font-black bg-red-700 text-white shadow-2xs">
@@ -223,8 +258,11 @@ export const QuickActions: React.FC<QuickActionsProps> = ({
               <div className="p-2 rounded-xl bg-white shadow-2xs group-hover:scale-105 transition-transform">
                 {card.icon}
               </div>
-              <span className="text-xs font-bold mt-1.5 text-center leading-tight line-clamp-2">
+              <span className="text-xs font-extrabold mt-1.5 text-center leading-tight line-clamp-1">
                 {card.title}
+              </span>
+              <span className="text-[9px] text-slate-500 font-medium text-center line-clamp-1 mt-0.5">
+                {card.desc}
               </span>
             </button>
           ))}
@@ -238,13 +276,16 @@ export const QuickActions: React.FC<QuickActionsProps> = ({
             <button
               key={card.id}
               onClick={() => onOpenModal(card.modalType)}
-              className={`relative flex flex-col items-center justify-center p-3 rounded-2xl border transition-all active:scale-95 group min-h-[96px] ${card.color}`}
+              className={`relative flex flex-col items-center justify-center p-2.5 sm:p-3 rounded-2xl border transition-all active:scale-95 group min-h-[100px] ${card.color}`}
             >
               <div className="p-2 rounded-xl bg-white shadow-2xs group-hover:scale-105 transition-transform">
                 {card.icon}
               </div>
-              <span className="text-xs font-bold mt-1.5 text-center leading-tight line-clamp-2">
+              <span className="text-xs font-extrabold mt-1.5 text-center leading-tight line-clamp-1">
                 {card.title}
+              </span>
+              <span className="text-[9px] text-slate-500 font-medium text-center line-clamp-1 mt-0.5">
+                {card.desc}
               </span>
             </button>
           ))}
@@ -258,7 +299,7 @@ export const QuickActions: React.FC<QuickActionsProps> = ({
             <button
               key={card.id}
               onClick={() => onOpenModal(card.modalType)}
-              className={`relative flex flex-col items-center justify-center p-3 rounded-2xl border transition-all active:scale-95 group min-h-[96px] ${card.color}`}
+              className={`relative flex flex-col items-center justify-center p-2.5 sm:p-3 rounded-2xl border transition-all active:scale-95 group min-h-[100px] ${card.color}`}
             >
               {card.badge && (
                 <span className="absolute -top-1.5 -right-1 px-1.5 py-0.5 rounded-full text-[9px] font-black bg-rose-700 text-white shadow-2xs">
@@ -268,15 +309,51 @@ export const QuickActions: React.FC<QuickActionsProps> = ({
               <div className="p-2 rounded-xl bg-white shadow-2xs group-hover:scale-105 transition-transform">
                 {card.icon}
               </div>
-              <span className="text-xs font-bold mt-1.5 text-center leading-tight line-clamp-2">
+              <span className="text-xs font-extrabold mt-1.5 text-center leading-tight line-clamp-1">
                 {card.title}
               </span>
+              <span className="text-[9px] text-slate-500 font-medium text-center line-clamp-1 mt-0.5">
+                {card.desc}
+              </span>
             </button>
+          ))}
+        </div>
+      </section>
+
+      {/* 4. EXTERNAL GOVERNMENT DVC PORTAL LINKS */}
+      <section className="p-3 bg-gradient-to-r from-red-950 via-red-900 to-red-950 text-white rounded-2xl border border-amber-500/40 shadow-xs space-y-2">
+        <div className="flex items-center justify-between border-b border-red-800/80 pb-1.5">
+          <div className="flex items-center gap-1.5">
+            <Globe className="w-4 h-4 text-amber-300 shrink-0 animate-pulse" />
+            <span className="text-[11px] font-black text-amber-300 uppercase tracking-wide">
+              CỔNG DỊCH VỤ CÔNG BỘ CÔNG AN & QUỐC GIA
+            </span>
+          </div>
+          <span className="text-[9px] bg-amber-400 text-red-950 font-black px-1.5 py-0.5 rounded">
+            Chính thức
+          </span>
+        </div>
+
+        <div className="grid grid-cols-3 gap-1.5">
+          {externalPortals.map((portal) => (
+            <a
+              key={portal.url}
+              href={portal.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-2 rounded-xl bg-white/10 hover:bg-amber-400/20 border border-white/15 text-center transition-all group flex flex-col items-center justify-center gap-0.5 active:scale-95"
+            >
+              <span className="text-[9px] font-black text-amber-300 bg-red-900/90 px-1 rounded border border-amber-400/30">
+                {portal.tag}
+              </span>
+              <span className="text-[10px] font-bold text-slate-100 group-hover:text-amber-200 line-clamp-1 mt-0.5">
+                {portal.name}
+              </span>
+              <ExternalLink className="w-3 h-3 text-amber-400 opacity-80 group-hover:opacity-100 mt-0.5" />
+            </a>
           ))}
         </div>
       </section>
     </div>
   );
 };
-
-

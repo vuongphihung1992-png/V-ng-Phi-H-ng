@@ -144,6 +144,8 @@ export interface SiteSettings {
   allowPublicReports: boolean;
   allowOnlineAppointments: boolean;
   maintenanceMode: boolean;
+  gaMeasurementId?: string;
+  enableAnalytics?: boolean;
 }
 
 export interface HamletOfficer {

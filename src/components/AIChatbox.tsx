@@ -19,6 +19,7 @@ import {
   Building2,
   FileText
 } from 'lucide-react';
+import { analyticsService } from '../services/analyticsService';
 
 interface ChatMessage {
   id: string;
@@ -178,6 +179,7 @@ export const AIChatbox: React.FC<AIChatboxProps> = ({
     setMessages((prev) => [...prev, userMsg]);
     setInputMessage('');
     setIsLoading(true);
+    analyticsService.trackEvent('ai_chat_query', 'AIChat', msgText);
 
     try {
       const response = await fetch('/api/chat', {

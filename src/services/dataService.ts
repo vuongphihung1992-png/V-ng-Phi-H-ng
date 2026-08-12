@@ -77,7 +77,9 @@ const INITIAL_SETTINGS: SiteSettings = {
   enableAlertBanner: true,
   allowPublicReports: true,
   allowOnlineAppointments: true,
-  maintenanceMode: false
+  maintenanceMode: false,
+  gaMeasurementId: 'G-PONGDRANG2026',
+  enableAnalytics: true
 };
 
 // Initial Mock Reports for Demo Admin View
